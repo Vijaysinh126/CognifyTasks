@@ -1,0 +1,217 @@
+:root{
+  --left-bg: #ffffff;
+  --right-bg: #bfe3a8;          /* soft green like screenshot */
+  --ink: #111;
+  --muted: rgba(0,0,0,.7);
+  --panel-radius: 18px;
+  --shadow: 0 14px 40px rgba(0,0,0,.18);
+}
+
+*{ box-sizing: border-box; }
+body{
+  margin: 0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color: var(--ink);
+  background: #1a1a1a;          /* dark outer background like screenshot border */
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: clamp(12px, 3vw, 28px);
+}
+
+/* Main layout (two panels) */
+.page{
+  width: min(1100px, 100%);
+  background: transparent;
+  border-radius: var(--panel-radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+
+  display: grid;
+  grid-template-columns: 1.05fr 1.25fr;
+  min-height: clamp(420px, 62vh, 620px);
+
+  animation: riseIn .7s ease both;
+}
+
+/* Left */
+.left-panel{
+  background: var(--left-bg);
+  padding: clamp(18px, 3vw, 30px);
+  display: grid;
+  grid-template-rows: auto 1fr;
+  gap: 18px;
+}
+
+.title{
+  font-weight: 800;
+  letter-spacing: .2px;
+  margin: 0;
+  font-size: clamp(24px, 2.6vw, 36px);
+}
+
+.illustration-wrap{
+  display: grid;
+  place-items: center;
+  padding: 8px;
+}
+
+.illustration{
+  width: min(340px, 92%);
+  aspect-ratio: 4/3;
+  object-fit: cover;
+  border-radius: 14px;
+  filter: saturate(1.05) contrast(1.02);
+  transform: translateY(0);
+  transition: transform .25s ease, filter .25s ease;
+}
+.illustration:hover{
+  transform: translateY(-4px) scale(1.01);
+  filter: saturate(1.2) contrast(1.05);
+}
+
+/* Right */
+.right-panel{
+  background: var(--right-bg);
+  padding: clamp(18px, 3vw, 30px);
+  display: grid;
+  grid-template-rows: auto 1fr;
+  gap: 14px;
+}
+
+.topbar{
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: start;
+  gap: 12px;
+}
+
+.task{
+  margin: 0;
+  font-weight: 800;
+  font-size: clamp(18px, 2.1vw, 26px);
+  line-height: 1.2;
+}
+
+.brand{
+  background: rgba(255,255,255,.55);
+  border: 1px solid rgba(0,0,0,.08);
+  border-radius: 14px;
+  padding: 10px 12px;
+  display: grid;
+  grid-template-columns: 26px auto;
+  gap: 10px;
+  align-items: center;
+  box-shadow: 0 10px 24px rgba(0,0,0,.08);
+  transition: transform .2s ease;
+}
+.brand:hover{ transform: translateY(-2px); }
+
+.brand-mark{
+  width: 26px;
+  height: 26px;
+  border-radius: 7px;
+  background: conic-gradient(from 200deg, #ff8a00, #00c2ff, #7c3aed, #ff8a00);
+}
+.brand-name{
+  font-weight: 900;
+  line-height: 1;
+}
+.brand-tag{
+  font-size: 11px;
+  color: var(--muted);
+  margin-top: 2px;
+}
+
+.content{
+  display: grid;
+  gap: 14px;
+  align-content: start;
+}
+
+.objective{
+  margin: 0;
+  font-size: 16px;
+}
+
+.steps-card{
+  background: rgba(255,255,255,.35);
+  border: 1px solid rgba(0,0,0,.08);
+  border-radius: 16px;
+  padding: 16px;
+  backdrop-filter: blur(6px);
+}
+
+.steps-title{
+  margin: 0 0 8px 0;
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.steps{
+  margin: 0;
+  padding-left: 20px;
+}
+.steps li{
+  margin: 8px 0;
+  line-height: 1.35;
+}
+
+/* Buttons: add transitions */
+.btn-anim{
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+.btn-anim:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(0,0,0,.15);
+}
+.btn-anim:active{
+  transform: translateY(0px) scale(.98);
+}
+
+.mini-grid{
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.mini-card{
+  background: rgba(255,255,255,.42);
+  border: 1px solid rgba(0,0,0,.08);
+  border-radius: 14px;
+  padding: 12px;
+  transition: transform .2s ease, background .2s ease;
+}
+.mini-card:hover{
+  transform: translateY(-3px);
+  background: rgba(255,255,255,.55);
+}
+
+.mini-kpi{
+  font-weight: 900;
+  margin-bottom: 6px;
+}
+.mini-text{
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+/* Animation */
+@keyframes riseIn{
+  from{ opacity: 0; transform: translateY(10px) scale(.99); }
+  to{ opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* Responsive breakpoints */
+@media (max-width: 900px){
+  .page{ grid-template-columns: 1fr; }
+  .topbar{ grid-template-columns: 1fr; }
+  .brand{ justify-self: start; }
+  .mini-grid{ grid-template-columns: 1fr; }
+}
+
+@media (prefers-reduced-motion: reduce){
+  .page{ animation: none; }
+  .illustration, .btn-anim, .mini-card, .brand{ transition: none; }
+}
