@@ -1,6 +1,7 @@
 'use client';
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { useParams, notFound } from 'next/navigation';
+import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Timer, Star, CheckCircle, XCircle, Trophy, ArrowRight, RotateCcw } from 'lucide-react';
 import { algorithmsData } from '@/lib/algorithmData';
@@ -289,14 +290,14 @@ export default function InterviewModePage() {
               <RotateCcw className="w-4 h-4" />
               Play Again
             </button>
-            <a href="/leaderboard" className="flex items-center gap-2 px-6 py-3 glass hover:bg-white/10 text-slate-200 rounded-xl font-medium transition-all">
+            <Link href="/leaderboard" className="flex items-center gap-2 px-6 py-3 glass hover:bg-white/10 text-slate-200 rounded-xl font-medium transition-all">
               <Trophy className="w-4 h-4" />
               Leaderboard
-            </a>
-            <a href={`/algorithms/${algoName}`} className="flex items-center gap-2 px-6 py-3 glass hover:bg-white/10 text-slate-200 rounded-xl font-medium transition-all">
+            </Link>
+            <Link href={`/algorithms/${algoName}`} className="flex items-center gap-2 px-6 py-3 glass hover:bg-white/10 text-slate-200 rounded-xl font-medium transition-all">
               <ArrowRight className="w-4 h-4" />
               Study Mode
-            </a>
+            </Link>
           </div>
         </motion.div>
       )}

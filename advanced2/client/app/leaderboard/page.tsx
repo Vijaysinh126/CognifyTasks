@@ -1,4 +1,5 @@
 'use client';
+import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { Trophy, Medal, Star, Clock, Hash } from 'lucide-react';
 import { useStore } from '@/lib/store';
@@ -78,9 +79,9 @@ export default function LeaderboardPage() {
           <div className="px-6 py-12 text-center text-slate-500">
             <Trophy className="w-12 h-12 mx-auto mb-3 opacity-30" />
             <p>No scores yet. Complete Interview Mode to appear here!</p>
-            <a href="/algorithms/binary-search" className="mt-4 inline-block px-6 py-2 bg-indigo-600 hover:bg-indigo-500 text-white rounded-lg text-sm transition-colors">
+            <Link href="/algorithms/binary-search" className="mt-4 inline-block px-6 py-2 bg-indigo-600 hover:bg-indigo-500 text-white rounded-lg text-sm transition-colors">
               Start Practicing
-            </a>
+            </Link>
           </div>
         ) : (
           <div className="divide-y divide-white/5">

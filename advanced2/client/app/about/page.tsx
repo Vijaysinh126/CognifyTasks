@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { Brain, Code2, BarChart3, Target, Zap, ExternalLink } from 'lucide-react';
 
 const techStack = [
-  { name: 'Next.js 14', desc: 'App Router, SSR', color: 'text-slate-200' },
+  { name: 'Next.js 15', desc: 'App Router, SSR', color: 'text-slate-200' },
   { name: 'React 18', desc: 'Concurrent features', color: 'text-cyan-400' },
   { name: 'TypeScript', desc: 'Type safety', color: 'text-blue-400' },
   { name: 'Tailwind CSS', desc: 'Utility-first styling', color: 'text-sky-400' },
